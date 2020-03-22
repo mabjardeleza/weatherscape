@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "plugins": ["prettier"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "no-trailing-spaces": [
+      "error",
+      { "skipBlankLines": true, "ignoreComments": true }
+    ],
+    "object-curly-newline": "off",
+    "react/jsx-one-expression-per-line": "off"
+  }
+}
