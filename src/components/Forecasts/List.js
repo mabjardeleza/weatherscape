@@ -1,25 +1,30 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ListItem from './ListItem';
 
-const List = () => (
+const List = ({ details }) => (
   <div className="forecastsList">
-    <ListItem />
-    <ListItem />
-    <ListItem />
+    {details.map(({ validDate, temp, weather: { description } }) => (
+      <ListItem
+        key={validDate}
+        date={validDate}
+        temp={temp}
+        description={description}
+      />
+    ))}
   </div>
 );
 
-// List.propTypes = {
-//   details: PropTypes.arrayOf(PropTypes.shape({
-//     label: PropTypes.string.isRequired,
-//     convertedMaxTemp: PropTypes.number.isRequired,
-//     convertedMinTemp: PropTypes.number.isRequired,
-//     weather: PropTypes.shape({
-//       icon: PropTypes.string.isRequired,
-//       description: PropTypes.string.isRequired,
-//     }).isRequired,
-//   })).isRequired,
-// };
+List.propTypes = {
+  details: PropTypes.arrayOf(
+    PropTypes.shape({
+      validDate: PropTypes.string,
+      temp: PropTypes.number,
+      weather: PropTypes.shape({
+        description: PropTypes.string,
+      }).isRequired,
+    }),
+  ).isRequired,
+};
 
 export default List;

@@ -1,14 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Header.css';
 import GradientBackground from './GradientBackground';
 
-const Header = () => (
+const Header = ({ description, cityName, countryCode, temp }) => (
   <div className="header-container">
     <GradientBackground gradient="cloudy" />
-    <div className="weather-description">Cloudy</div>
-    <div className="weather-location">Adelaide, Australia</div>
-    <div className="weather-temperature">19°</div>
+    <div className="weather-description">{description}</div>
+    <div className="weather-location">
+      {cityName && `${cityName}, ${countryCode}`}
+    </div>
+    <div className="weather-temperature">{cityName && temp && `${temp}°`}</div>
   </div>
 );
+
+Header.propTypes = {
+  description: PropTypes.string,
+  cityName: PropTypes.string,
+  countryCode: PropTypes.string,
+  temp: PropTypes.number,
+};
+
+Header.defaultProps = {
+  description: '',
+  cityName: '',
+  countryCode: '',
+  temp: '',
+};
 
 export default Header;

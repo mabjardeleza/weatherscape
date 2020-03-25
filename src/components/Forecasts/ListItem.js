@@ -1,28 +1,29 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import moment from 'moment';
 
-const ListItem = () => (
+const ListItem = ({ date, temp, description }) => (
   <div className="forecastsList-item">
     <div className="forecastsList-itemUpper">
-      <div>Monday</div>
-      <div>18°</div>
+      <div>{date && moment(date).format('dddd')}</div>
+      <div>{date && temp && `${temp}°`}</div>
     </div>
     <div className="forecastsList-itemLower">
-      <div>Cloudy</div>
+      <div>{description}</div>
     </div>
   </div>
 );
 
-// ListItem.propTypes = {
-//   details: PropTypes.shape({
-//     label: PropTypes.string.isRequired,
-//     convertedMaxTemp: PropTypes.number.isRequired,
-//     convertedMinTemp: PropTypes.number.isRequired,
-//     weather: PropTypes.shape({
-//       icon: PropTypes.string.isRequired,
-//       description: PropTypes.string.isRequired,
-//     }).isRequired,
-//   }).isRequired,
-// };
+ListItem.propTypes = {
+  date: PropTypes.string,
+  temp: PropTypes.number,
+  description: PropTypes.string,
+};
+
+ListItem.defaultProps = {
+  date: '',
+  temp: 0,
+  description: '',
+};
 
 export default ListItem;
