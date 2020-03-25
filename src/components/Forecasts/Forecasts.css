@@ -1,6 +1,6 @@
 .forecasts {
   max-width: 32rem;
-  padding: 20px;
+  padding: 20px 35px;
   color: #333;
   margin: 0 auto;
 }
@@ -24,18 +24,40 @@
 
 .forecastsList-item {
   display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  padding: 8px 0;
-}
-
-.forecastsList-itemUpper {
-  display: flex;
   justify-content: space-between;
   font-size: 20px;
+  padding: 8px 0;
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  align-items: center;
 }
 
-.forecastsList-itemLower {
+.forecastsList-item.selected::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  margin-top: -3px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent #000;
+}
+
+.forecastsList-itemLeft {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forecastsList-itemRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.forecastsList-description {
+  font-size: 14px;
 }

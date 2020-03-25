@@ -2,7 +2,7 @@
   display: flex;
   max-width: 32rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 35px;
   justify-content: space-between;
 }
 
@@ -21,6 +21,7 @@
   padding: 13px;
   background-color: #f0f0f0;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .settings .button {
@@ -30,4 +31,5 @@
   height: 40px;
   background-color: #5d5d5d;
   color: white;
+  cursor: pointer;
 }

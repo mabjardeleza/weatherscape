@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 import List from './List';
 import './Forecasts.css';
 
-const Forecasts = ({ details }) => (
+const Forecasts = ({ details, selectedIndex, changeForecast }) => (
   <div className="forecasts">
-    <List details={details} />
+    <List
+      details={details}
+      selectedIndex={selectedIndex}
+      changeForecast={changeForecast}
+    />
   </div>
 );
 
@@ -20,6 +24,8 @@ Forecasts.propTypes = {
       }).isRequired,
     }),
   ).isRequired,
+  selectedIndex: PropTypes.number.isRequired,
+  changeForecast: PropTypes.func.isRequired,
 };
 
 export default Forecasts;

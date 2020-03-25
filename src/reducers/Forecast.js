@@ -62,7 +62,7 @@ const initialForecastKey = {
 };
 
 export function forecastSelection(state = initialForecastKey, action) {
-  switch (action.payload) {
+  switch (action.type) {
     case FORECAST.SELECT:
       return {
         currentForecast: action.payload,

@@ -1,15 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { forecastListActions, settingsListActions } from '../actions';
+import {
+  forecastListActions,
+  forecastSelectionActions,
+  settingsListActions,
+} from '../actions';
 import { Header, Forecasts, Settings } from '../components';
 import UNITS from '../global/constants';
 import usePosition from '../hooks';
 
 const Home = () => {
-  const { lat, lon, loading: loadingLocation, error } = usePosition();
+  const { lat, lon, error } = usePosition();
   const forecast = useSelector((state) => state.forecast);
-  console.log(forecast);
+  const unitIndex = useSelector((state) => state.settings.unitIndex);
+  const selectedIndex = useSelector(
+    (state) => state.forecastSelection.currentForecast,
+  );
   const selectedForecastKey = useSelector(
     (state) => state.forecastSelection.currentForecast,
   );
@@ -22,7 +29,6 @@ const Home = () => {
   useEffect(() => {
     if (lat && lon) {
       dispatch(settingsListActions.setCoordinates(lat, lon));
-      console.log(`${lat} ${lon} ${error}`);
     }
   }, [dispatch, lat, lon, error]);
 
@@ -36,8 +42,6 @@ const Home = () => {
     }
   }, [dispatch, stateLat, stateLon]);
 
-  const unitIndex = useSelector((state) => state.settings.unitIndex);
-
   const toggleUnit = () => {
     const nextUnit = (unitIndex + 1) % UNITS.length;
     dispatch(settingsListActions.setTemperatureUnit(nextUnit));
@@ -47,6 +51,10 @@ const Home = () => {
   const changeCity = (city) => {
     dispatch(settingsListActions.setCity(city));
     dispatch(forecastListActions.request());
+  };
+
+  const changeForecast = (index) => {
+    dispatch(forecastSelectionActions.select(index));
   };
 
   return (
@@ -62,7 +70,11 @@ const Home = () => {
         toggleUnit={toggleUnit}
         unitLabel={UNITS[unitIndex].temp}
       />
-      <Forecasts details={forecast.data.data} />
+      <Forecasts
+        details={forecast.data.data}
+        selectedIndex={selectedIndex}
+        changeForecast={changeForecast}
+      />
     </div>
   );
 };

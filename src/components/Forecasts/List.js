@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from './ListItem';
 
-const List = ({ details }) => (
+const List = ({ details, selectedIndex, changeForecast }) => (
   <div className="forecastsList">
-    {details.map(({ validDate, temp, weather: { description } }) => (
+    {details.map(({ validDate, temp, weather: { description } }, index) => (
       <ListItem
         key={validDate}
         date={validDate}
         temp={temp}
         description={description}
+        selected={index === selectedIndex}
+        onClick={() => changeForecast(index)}
       />
     ))}
   </div>
@@ -22,9 +24,11 @@ List.propTypes = {
       temp: PropTypes.number,
       weather: PropTypes.shape({
         description: PropTypes.string,
-      }).isRequired,
+      }),
     }),
   ).isRequired,
+  selectedIndex: PropTypes.number.isRequired,
+  changeForecast: PropTypes.func.isRequired,
 };
 
 export default List;
