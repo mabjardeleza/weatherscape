@@ -9,6 +9,7 @@ import {
 import { Header, Forecasts, Settings } from '../components';
 import UNITS from '../global/constants';
 import usePosition from '../hooks';
+import './Home.css';
 
 const Home = () => {
   const { lat, lon, error } = usePosition();
@@ -30,7 +31,7 @@ const Home = () => {
     if (lat && lon) {
       dispatch(settingsListActions.setCoordinates(lat, lon));
     }
-  }, [dispatch, lat, lon, error]);
+  }, [dispatch, lat, lon]);
 
   const { lat: stateLat, lon: stateLon } = useSelector(
     (state) => state.settings.coordinates,
@@ -58,23 +59,27 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="weatherApp">
       <Header
+        date={currentForecast.validDate}
         description={currentForecast.weather.description}
         cityName={forecast.data.cityName}
         countryCode={forecast.data.countryCode}
         temp={currentForecast.temp}
       />
-      <Settings
-        setCity={changeCity}
-        toggleUnit={toggleUnit}
-        unitLabel={UNITS[unitIndex].temp}
-      />
-      <Forecasts
-        details={forecast.data.data}
-        selectedIndex={selectedIndex}
-        changeForecast={changeForecast}
-      />
+      <div className="weatherApp-body">
+        <Settings
+          setCity={changeCity}
+          toggleUnit={toggleUnit}
+          unitLabel={UNITS[unitIndex].temp}
+          error={forecast.error || error}
+        />
+        <Forecasts
+          details={forecast.data.data}
+          selectedIndex={selectedIndex}
+          changeForecast={changeForecast}
+        />
+      </div>
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import './Header.css';
 import GradientBackground from './GradientBackground';
 
-const Header = ({ description, cityName, countryCode, temp }) => (
+const Header = ({ date, description, cityName, countryCode, temp }) => (
   <div className="header-container">
     <GradientBackground gradient="cloudy" />
     <div className="weather-description">{description}</div>
@@ -12,10 +13,14 @@ const Header = ({ description, cityName, countryCode, temp }) => (
       {cityName && `${cityName}, ${countryCode}`}
     </div>
     <div className="weather-temperature">{cityName && temp && `${temp}°`}</div>
+    <div className="weather-date">
+      {date && moment(date).format('MMM D, YYYY')}
+    </div>
   </div>
 );
 
 Header.propTypes = {
+  date: PropTypes.string,
   description: PropTypes.string,
   cityName: PropTypes.string,
   countryCode: PropTypes.string,
@@ -23,6 +28,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+  date: '',
   description: '',
   cityName: '',
   countryCode: '',

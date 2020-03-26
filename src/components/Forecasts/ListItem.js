@@ -12,7 +12,7 @@ const ListItem = ({ date, temp, description, selected, onClick }) => (
       <div>{date && moment(date).format('dddd')}</div>
     </div>
     <div className="forecastsList-itemRight">
-      <div>{date && temp && `${temp}°`}</div>
+      <div className="forecastsList-temp">{date && temp && `${temp}°`}</div>
       <div className="forecastsList-description">{description}</div>
     </div>
   </button>

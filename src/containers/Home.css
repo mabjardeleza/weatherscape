@@ -1,0 +1,18 @@
+.weatherApp {
+  display: flex;
+  flex-direction: column;
+}
+
+.weatherApp-body {
+  width: 100%;
+}
+
+@media screen and (min-width: 1280px) {
+  .weatherApp {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .weatherApp-body {
+    width: 60%;
+  }
+}

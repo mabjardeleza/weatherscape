@@ -5,7 +5,7 @@ const SearchBar = ({ onChange }) => {
   const [value, setValue] = useState();
 
   return (
-    <div>
+    <>
       <input
         type="text"
         placeholder="City"
@@ -20,7 +20,7 @@ const SearchBar = ({ onChange }) => {
       >
         Search
       </button>
-    </div>
+    </>
   );
 };
 

@@ -1,20 +1,7 @@
 .forecasts {
   max-width: 32rem;
   padding: 20px 35px;
-  color: #333;
   margin: 0 auto;
-}
-
-.forecastsTab {
-  display: flex;
-  font-size: 20px;
-  padding-bottom: 12px;
-}
-
-.forecastsTab>div {
-  padding-bottom: 10px;
-  border-bottom: 2px solid #333;
-  margin-right: 30px;
 }
 
 .forecastsList {
@@ -32,6 +19,7 @@
   background: none;
   border: none;
   align-items: center;
+  color: #808080;
 }
 
 .forecastsList-item.selected::before {
@@ -39,7 +27,7 @@
   position: absolute;
   left: -20px;
   top: 50%;
-  margin-top: -3px;
+  margin-top: -7px;
   border-width: 6px;
   border-style: solid;
   border-color: transparent transparent transparent #000;
@@ -51,13 +39,46 @@
   justify-content: center;
 }
 
+.forecastsList-itemMiddle {
+  display: none;
+  text-align: right;
+}
+
 .forecastsList-itemRight {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: space-between;
+  color: #78cad2;
 }
 
 .forecastsList-description {
   font-size: 14px;
+  color: #808080;
+}
+
+.forecastsList-temp {
+  max-width: 120px;
+  width: 100%;
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+  .forecasts {
+    max-width: 100%;
+    padding: 30px 100px 50px;
+  }
+  .forecastsList-item {
+    padding: 20px 0;
+  }
+  .forecastsList-itemRight {
+    font-size: 20px;
+    flex-direction: row-reverse;
+    flex: 1;
+  }
+  .forecastsList-description {
+    font-size: 20px;
+    text-align: right;
+    width: 100%;
+  }
 }
