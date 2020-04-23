@@ -49,8 +49,10 @@
 }
 
 .gradient-background {
+  background: linear-gradient(145deg, #78cad2 0%, #62a8ac 51%, #5497a7 75%);
   background-color: #1fc8db;
-  background-image: linear-gradient(145deg, #78cad2 0%, #62a8ac 51%, #5497a7 75%);
+  background-size: cover;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   left: 0;

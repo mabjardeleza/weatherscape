@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GradientBackground = ({ children, gradient }) => (
-  <div className={`gradient-background ${gradient}`}>{children}</div>
+const GradientBackground = ({ backgroundImage, gradient }) => (
+  <div
+    style={{
+      background: `linear-gradient(145deg, rgba(120, 202, 210, 0.8) 0%, rgba(98, 168, 172, 0.8) 51%, rgba(84, 151, 167, 0.8) 75%), url(${backgroundImage})`,
+    }}
+    className={`gradient-background ${gradient}`}
+  />
 );
 
 GradientBackground.propTypes = {
-  children: PropTypes.node,
+  backgroundImage: PropTypes.string,
   gradient: PropTypes.string,
 };
 
 GradientBackground.defaultProps = {
-  children: null,
+  backgroundImage: '',
   gradient: '',
 };
 

@@ -7,7 +7,7 @@ import GradientBackground from './GradientBackground';
 
 const Header = ({ date, description, cityName, countryCode, temp }) => (
   <div className="header-container">
-    <GradientBackground gradient="cloudy" />
+    <GradientBackground backgroundImage="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" />
     <div className="weather-description">{description}</div>
     <div className="weather-location">
       {cityName && `${cityName}, ${countryCode}`}
