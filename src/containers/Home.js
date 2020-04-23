@@ -14,6 +14,7 @@ import './Home.css';
 const Home = () => {
   const { lat, lon, error } = usePosition();
   const forecast = useSelector((state) => state.forecast);
+  const image = useSelector((state) => state.image);
   const unitIndex = useSelector((state) => state.settings.unitIndex);
   const selectedIndex = useSelector(
     (state) => state.forecastSelection.currentForecast,
@@ -66,6 +67,7 @@ const Home = () => {
         cityName={forecast.data.cityName}
         countryCode={forecast.data.countryCode}
         temp={currentForecast.temp}
+        image={image.image}
       />
       <div className="weatherApp-body">
         <Settings

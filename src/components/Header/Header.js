@@ -5,9 +5,12 @@ import moment from 'moment';
 import './Header.css';
 import GradientBackground from './GradientBackground';
 
-const Header = ({ date, description, cityName, countryCode, temp }) => (
+const Header = ({ date, description, cityName, countryCode, temp, image }) => (
   <div className="header-container">
-    <GradientBackground backgroundImage="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df" />
+    <GradientBackground
+      image={image}
+      backgroundImage="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df"
+    />
     <div className="weather-description">{description}</div>
     <div className="weather-location">
       {cityName && `${cityName}, ${countryCode}`}
@@ -25,6 +28,7 @@ Header.propTypes = {
   cityName: PropTypes.string,
   countryCode: PropTypes.string,
   temp: PropTypes.number,
+  image: PropTypes.shape({}),
 };
 
 Header.defaultProps = {
@@ -33,6 +37,7 @@ Header.defaultProps = {
   cityName: '',
   countryCode: '',
   temp: '',
+  image: {},
 };
 
 export default Header;

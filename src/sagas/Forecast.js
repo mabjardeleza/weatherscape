@@ -1,6 +1,6 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { camelizeKeys } from 'humps';
-import { FORECAST, forecastListActions } from '../actions';
+import { FORECAST, forecastListActions, imageActions } from '../actions';
 import UNITS from '../global/constants';
 
 const getLocation = (state) => state.settings;
@@ -32,6 +32,7 @@ function* requestForecastData() {
     const jsonResponse = yield response.json();
     const forecasts = camelizeKeys(jsonResponse);
     yield put(forecastListActions.success(forecasts));
+    yield put(imageActions.request(forecasts.cityName));
   } catch (error) {
     yield put(forecastListActions.error(error));
   }
