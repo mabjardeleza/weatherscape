@@ -4,9 +4,11 @@ import { FORECAST, forecastListActions, imageActions } from '../actions';
 import UNITS from '../global/constants';
 
 const getLocation = (state) => state.settings;
+const getCurrentForecast = (state) => state.forecast.data;
 
 function* requestForecastData() {
   try {
+    const { cityName, countryCode } = yield select(getCurrentForecast);
     const {
       city,
       coordinates: { lat, lon },
@@ -32,7 +34,13 @@ function* requestForecastData() {
     const jsonResponse = yield response.json();
     const forecasts = camelizeKeys(jsonResponse);
     yield put(forecastListActions.success(forecasts));
-    yield put(imageActions.request(forecasts.cityName));
+
+    if (
+      cityName !== forecasts.cityName ||
+      countryCode !== forecasts.countryCode
+    ) {
+      yield put(imageActions.request(forecasts.cityName));
+    }
   } catch (error) {
     yield put(forecastListActions.error(error));
   }

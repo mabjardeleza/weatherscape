@@ -21,7 +21,11 @@ Settings.propTypes = {
   setCity: PropTypes.func.isRequired,
   toggleUnit: PropTypes.func.isRequired,
   unitLabel: PropTypes.string.isRequired,
-  error: PropTypes.bool.isRequired,
+  error: PropTypes.bool,
+};
+
+Settings.defaultProps = {
+  error: false,
 };
 
 export default Settings;

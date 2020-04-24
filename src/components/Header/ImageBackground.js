@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 
-import { useDebouncedResizeObserver } from '../../hooks';
-import { imageActions } from '../../actions';
+import { usePrevious } from '../../hooks';
 
-const GradientBackground = ({ image }) => {
-  const dispatch = useDispatch();
-  const { ref } = useDebouncedResizeObserver((sizes) => {
-    dispatch(imageActions.resize(sizes));
-  }, 2000);
+const ImageBackground = ({ image }) => {
+  const ref = useRef();
+  const prevImageUrl = usePrevious(image.urls.full);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    if (image.urls.full !== prevImageUrl) {
+      setSize({
+        width: ref.current.clientWidth,
+        height: ref.current.clientHeight,
+      });
+    }
+  }, [prevImageUrl, image.urls.full]);
+
+  const url =
+    image.urls.full &&
+    `${image.urls.full}?w=${size.width}&h=${size.height}&fit=crop&fm=webp`;
+
   return (
     <div
       ref={ref}
       style={{
-        backgroundImage: `linear-gradient(145deg, rgba(120, 202, 210, 0.8) 0%, rgba(98, 168, 172, 0.8) 51%, rgba(84, 151, 167, 0.8) 75%), url(${image.urls.full})`,
+        backgroundImage: `linear-gradient(145deg, rgba(120, 202, 210, 0.8) 0%, rgba(98, 168, 172, 0.8) 51%, rgba(84, 151, 167, 0.8) 75%), url(${url})`,
       }}
       className="gradient-background"
     >
@@ -36,7 +47,7 @@ const GradientBackground = ({ image }) => {
   );
 };
 
-GradientBackground.propTypes = {
+ImageBackground.propTypes = {
   image: PropTypes.shape({
     user: PropTypes.shape({
       name: PropTypes.string,
@@ -50,7 +61,7 @@ GradientBackground.propTypes = {
   }),
 };
 
-GradientBackground.defaultProps = {
+ImageBackground.defaultProps = {
   image: {
     user: {
       name: '',
@@ -64,4 +75,4 @@ GradientBackground.defaultProps = {
   },
 };
 
-export default GradientBackground;
+export default ImageBackground;

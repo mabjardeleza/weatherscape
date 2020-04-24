@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import './Header.css';
-import GradientBackground from './GradientBackground';
+import ImageBackground from './ImageBackground';
 
 const Header = ({ date, description, cityName, countryCode, temp, image }) => (
   <div className="header-container">
-    <GradientBackground
-      image={image}
-      backgroundImage="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df"
-    />
+    <ImageBackground image={image} />
     <div className="weather-description">{description}</div>
     <div className="weather-location">
       {cityName && `${cityName}, ${countryCode}`}
