@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import List from './List';
-import './Forecasts.css';
+import './Forecasts.scss';
 
 const Forecasts = ({ details, selectedIndex, changeForecast }) => (
   <div className="forecasts">

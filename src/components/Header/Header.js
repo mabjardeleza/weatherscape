@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-import './Header.css';
+import './Header.scss';
 import ImageBackground from './ImageBackground';
 
 const Header = ({ date, description, cityName, countryCode, temp, image }) => (

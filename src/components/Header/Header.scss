@@ -6,36 +6,43 @@
   color: white;
   height: 60vh;
   position: relative;
-}
 
-.weather-description {
-  font-size: 2rem;
-}
-
-.weather-location {
-  font-size: 1rem;
-}
-
-.weather-temperature {
-  font-size: 6rem;
-}
-
-.weather-date {
-  font-size: 0.75rem;
-}
-
-@media screen and (min-width: 768px) {
-  .weather-description {
-    font-size: 3rem;
+  @media screen and (min-width: 1280px) {
+    width: 40%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
   }
-  .weather-location {
+}
+
+.weather {
+  &-description {
     font-size: 2rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 3rem;
+    }
   }
-  .weather-temperature {
-    font-size: 10rem;
-  }
-  .weather-date {
+  &-location {
     font-size: 1rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  &-temperature {
+    font-size: 6rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 10rem;
+    }
+  }
+  &-date {
+    font-size: 0.75rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -70,23 +77,19 @@
   text-align: center;
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.75rem;
-}
 
-.photo-attributes a {
-  text-decoration: underline;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-@media screen and (min-width: 768px) {
-  .photo-attributes {
+  @media screen and (min-width: 768px) {
     font-size: 1rem;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .photo-attributes {
+  @media screen and (min-width: 1280px) {
     width: fit-content;
     text-align: left;
     left: 20px;
+  }
+
+  a {
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.5);
   }
 }

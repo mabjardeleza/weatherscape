@@ -9,7 +9,7 @@ import {
 import { Header, Forecasts, Settings } from '../components';
 import UNITS from '../global/constants';
 import { usePosition } from '../hooks';
-import './Home.css';
+import './Home.scss';
 
 const Home = () => {
   const { lat, lon, error } = usePosition();

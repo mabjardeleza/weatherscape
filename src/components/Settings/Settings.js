@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import SearchBar from './SearchBar';
 import Button from './Button';
-import './Settings.css';
+import './Settings.scss';
 
 const Settings = ({ setCity, toggleUnit, unitLabel, error }) => (
   <div className="settings">
-    <div className="settingsContainer">
+    <div className="settings-container">
       <div className="searchBarContainer">
         <SearchBar onChange={setCity} className="searchBarContainer" />
       </div>
