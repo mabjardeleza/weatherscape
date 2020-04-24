@@ -21,7 +21,7 @@
 }
 
 .weather-date {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -65,12 +65,28 @@
 .photo-attributes {
   position: absolute;
   left: 0;
-  bottom: 0;
-  padding: 20px;
-  color: white;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
 }
 
 .photo-attributes a {
   text-decoration: underline;
-  color: white;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  .photo-attributes {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .photo-attributes {
+    width: fit-content;
+    text-align: left;
+    left: 20px;
+  }
 }

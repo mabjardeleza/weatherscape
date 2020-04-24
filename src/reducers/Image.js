@@ -12,6 +12,10 @@ const initialImage = {
       },
     },
   },
+  size: {
+    width: null,
+    height: null,
+  },
   loading: false,
   error: false,
 };
@@ -27,6 +31,7 @@ export default function image(state = initialImage, action) {
 
     case IMAGE.SUCCESS:
       return {
+        ...state,
         image: action.payload,
         loading: false,
         error: false,
@@ -37,6 +42,12 @@ export default function image(state = initialImage, action) {
         ...state,
         loading: false,
         error: true,
+      };
+
+    case IMAGE.RESIZE:
+      return {
+        ...state,
+        size: action.payload,
       };
 
     default:

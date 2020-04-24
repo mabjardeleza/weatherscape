@@ -1,10 +1,16 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { camelizeKeys } from 'humps';
 import { IMAGE, imageActions } from '../actions';
 
+const getImageSize = (state) => state.image.size;
+
 function* requestImageData(action) {
   try {
-    const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${action.payload}`;
+    const { width, height } = yield select(getImageSize);
+    let url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${action.payload}`;
+    if (width && height) {
+      url = `${url}&fit=crop&w=${width}&h=${height}`;
+    }
 
     const response = yield call(fetch, url, {
       headers: {

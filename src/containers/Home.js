@@ -8,7 +8,7 @@ import {
 } from '../actions';
 import { Header, Forecasts, Settings } from '../components';
 import UNITS from '../global/constants';
-import usePosition from '../hooks';
+import { usePosition } from '../hooks';
 import './Home.css';
 
 const Home = () => {

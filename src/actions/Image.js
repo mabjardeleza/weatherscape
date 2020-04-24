@@ -2,6 +2,7 @@ export const IMAGE = {
   REQUEST: 'request_image',
   SUCCESS: 'success_image',
   ERROR: 'error_image',
+  RESIZE: 'resize_image',
 };
 
 export const imageActions = {
@@ -14,4 +15,5 @@ export const imageActions = {
     payload: imageData,
   }),
   error: (error) => ({ type: IMAGE.ERROR, payload: error, error: true }),
+  resize: (size) => ({ type: IMAGE.RESIZE, payload: size }),
 };
