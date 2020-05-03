@@ -1,6 +1,6 @@
 # WeatherScape
 
-WeatherScape is a weather application showing a 16 day forecast from the current day. The initial location is retrieved by Geolocation and can be changed by location name on the search bar. 
+WeatherScape is a weather application showing a 16 day forecast from the current day. The initial location is retrieved by Geolocation and can be changed by location name on the search bar.
 
 Each location will trigger a change in the background image, showing a relevant photo randomly taken from [Unsplash](https://unsplash.com).
 
@@ -20,6 +20,7 @@ Create a `.env` file on the project root and add the following:
 ```
 REACT_APP_WEATHERBIT_API_KEY=<YOUR-WEATHERBIT-API-KEY>
 REACT_APP_UNSPLASH_ACCESS_KEY=<YOUR-UNSPLASH-ACCESS-KEY>
+REACT_APP_UNSPLASH_APP_NAME=<YOUR-UNSPLASH-APP-NAME>
 ```
 
 ## Running the app

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { usePrevious } from '../../hooks';
 
+const UNSPLASH_REFERRAL_PARAMETERS = `utm_source=${process.env.REACT_APP_UNSPLASH_APP_NAME}&utm_medium=referral`;
+
 const ImageBackground = ({ image }) => {
   const ref = useRef();
   const prevImageUrl = usePrevious(image.urls.full);
@@ -32,13 +34,11 @@ const ImageBackground = ({ image }) => {
       {image.user.name && (
         <div className="photo-attributes">
           Photo by{' '}
-          <a
-            href={`${image.user.links.html}?utm_source=Weather_App&utm_medium=referral`}
-          >
+          <a href={`${image.user.links.html}?${UNSPLASH_REFERRAL_PARAMETERS}`}>
             {image.user.name}
           </a>{' '}
           on{' '}
-          <a href="https://unsplash.com?utm_source=Weather_App&utm_medium=referral">
+          <a href={`https://unsplash.com?${UNSPLASH_REFERRAL_PARAMETERS}`}>
             Unsplash
           </a>
         </div>
