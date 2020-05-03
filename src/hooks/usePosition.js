@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 const usePosition = (watch = false) => {
   const [position, setPosition] = useState();
-  const [loading, setLoading] = useState();
-  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const onChange = ({ coords: { latitude, longitude } }) => {
     setPosition({
@@ -12,8 +12,8 @@ const usePosition = (watch = false) => {
     });
   };
 
-  const onError = (err) => {
-    setError(err.message);
+  const onError = () => {
+    setError(true);
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const usePosition = (watch = false) => {
     if ('geolocation' in navigator) {
       geo = navigator.geolocation;
     } else {
-      setError('Geolocation not supported by browser.');
+      setError(true);
       setLoading(false);
       return null;
     }
